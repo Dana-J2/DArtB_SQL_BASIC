@@ -138,7 +138,7 @@
 
 ---
 # 2️⃣ 학습 인증란
-![week1_image](images/week1.jpg)
+
 
 
 <br>

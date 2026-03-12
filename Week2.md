@@ -293,9 +293,12 @@ LIMIT 10
 
 
 # 2️⃣ 학습 인증란
-
-<!-- 이 글을 지우고, 여기에 학습한 것을 인증해주세요.-->
-
+### 강의수강
+![week2-3](https://github.com/Dana-J2/DArtB_SQL_BASIC/blob/main/images/week2_3.png)
+### 8강 실습
+![week2_1](https://github.com/Dana-J2/DArtB_SQL_BASIC/blob/main/images/week2_1.jpg)
+### 9강 실습
+![week2-2](https://github.com/Dana-J2/DArtB_SQL_BASIC/blob/main/images/week2_2.jpg)
 
 
 <br><br>

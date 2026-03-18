@@ -72,12 +72,12 @@ WHERE type2 IS NULL;
 SELECT 
   type1, 
   COUNT(id) as cnt  
-  # 집계하는 기준이 있다면 그 기준 컬럼을 GROUP BY에 써야 한다
 FROM Basic.pokemon
 WHERE type2 IS NULL
 GROUP BY type1
 ORDER BY cnt DESC;
 ~~~
+- 집계하는 기준이 있다면 그 기준 컬럼을 `GROUP BY`에 써야 한다
 
 ### 문제3. type2 상관없이 type1의 포켓몬 수를 알 수 있는 쿼리
 ~~~sql

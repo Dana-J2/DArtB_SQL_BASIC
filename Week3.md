@@ -61,13 +61,13 @@
 * 연습문제(7문제 이상) 푼 것들 정리하기
 ~~~
 
-### 문제1. 포켓몬중에 type2가 없는 포켓몬의 수?
+### 🅾️ 문제1. 포켓몬중에 type2가 없는 포켓몬의 수?
 ~~~sql
 SELECT COUNT(id) AS cnt
 FROM Basic.pokemon
 WHERE type2 IS NULL;
 ~~~
-### 문제2. type2가 없는 포켓몬의 type1과 type1의 포켓몬수를 알려주는쿼리 (단, type1의 포켓몬 수가 큰순으로 정렬)
+###  🅾️ 문제2. type2가 없는 포켓몬의 type1과 type1의 포켓몬수를 알려주는쿼리 (단, type1의 포켓몬 수가 큰순으로 정렬)
 ~~~sql
 SELECT 
   type1, 
@@ -79,7 +79,7 @@ ORDER BY cnt DESC;
 ~~~
 - 집계하는 기준이 있다면 그 기준 컬럼을 `GROUP BY`에 써야 한다
 
-### 문제3. type2 상관없이 type1의 포켓몬 수를 알 수 있는 쿼리
+###  🅾️ 문제3. type2 상관없이 type1의 포켓몬 수를 알 수 있는 쿼리
 ~~~sql
 SELECT 
   type1, 
@@ -91,7 +91,7 @@ GROUP BY type1;
 - 이 데이터셋의 id는 중복이 없어서 `DICSTINCT`쓰나 안 쓰나 똑같음
 - Active한 유저의 수를 하루 단위로 집계하고자 할 때 이럴때는 `DISTINCT` 꼭 써줘야 함
 
-### 문제4. 전설여부에 따른 포켓몬 수를 알 수 있는 쿼리
+###  🅾️ 문제4. 전설여부에 따른 포켓몬 수를 알 수 있는 쿼리
 ~~~sql
 SELECT 
   is_legendary, 
@@ -103,7 +103,7 @@ GROUP BY is_legendary;
 - 이런건 빠르게 데이터 볼 때 사용. 실제 완성된 컬럼을 만들때는 컬럼 이름 정확하게 쓰기 
 
 
-### 문제5. 동명이인이 있는 이름?
+###  🅾️ 문제5. 동명이인이 있는 이름?
 ~~~sql
 SELECT
   name
@@ -112,27 +112,27 @@ GROUP BY name
 HAVING COUNT(name) > 1 ;
 ~~~
 
-### 문제6. trainer 테이블에서 "Iris" 트레이너의 정보를 알 수 있는 쿼리
+###  🅾️ 문제6. trainer 테이블에서 "Iris" 트레이너의 정보를 알 수 있는 쿼리
 ~~~sql
 SELECT *
 FROM Basic.trainer
 WHERE name = "Iris";
 ~~~
 
-### 문제7. trainer 테이블에서 "Iris", "Whitney", "Cynthia" 트레이너의 정보를 알 수 있는 쿼리를 작성
+###  🅾️ 문제7. trainer 테이블에서 "Iris", "Whitney", "Cynthia" 트레이너의 정보를 알 수 있는 쿼리를 작성
 ~~~sql
 SELECT *
 FROM Basic.trainer
 WHERE name IN ("Iris", "Whitney", "Cynthia");
 ~~~
 
-### 문제8. 전체 포켓몬 수 
+###  🅾️ 문제8. 전체 포켓몬 수 
 ~~~sql
 SELECT COUNT(DISTINCT id) as pokemon_total_cnt
 FROM Basic.pokemon;
 ~~~
 
-### 문제9. 세대별로 포켓몬 수가 얼마나 되는지
+###  🅾️ 문제9. 세대별로 포켓몬 수가 얼마나 되는지
 ~~~sql
 SELECT 
   generation,
@@ -141,7 +141,7 @@ FROM Basic.pokemon
 GROUP BY generation;
 ~~~
 
-### 문제10. type2가 존재하는 포켓몬수
+###  🅾️ 문제10. type2가 존재하는 포켓몬수
 ~~~sql
 SELECT 
   COUNT(id)
@@ -149,7 +149,7 @@ FROM Basic.pokemon
 WHERE type2 IS NOT NULL;
 ~~~
 
-### 문제11. type2가 있는 포켓몬 중에 제일 많은 type1
+### ❎ 문제11. type2가 있는 포켓몬 중에 제일 많은 type1
 ~~~SQl
 SELECT 
   type1,
@@ -162,7 +162,7 @@ LIMIT 1;
 ~~~
 - `LIMIT` : 행수제한
 
-### 문제12. 단일(하나의 타입만 있는) 타입 포켓몬 중 많은 type1
+### 🅾️ 문제12. 단일(하나의 타입만 있는) 타입 포켓몬 중 많은 type1
 ~~~sql
 SELECT 
   type1,
@@ -174,14 +174,14 @@ ORDER BY cnt DESC
 LIMIT 1;
 ~~~
 
-### 문제13. 포켓몬의 이름에 '파'가 들어가는 포켓몬은 어떤 포켓몬?
+### 🅾️ 문제13. 포켓몬의 이름에 '파'가 들어가는 포켓몬은 어떤 포켓몬?
 ~~~sql
 SELECT kor_name
 FROM Basic.pokemon
 WHERE kor_name LIKE "%파%";
 ~~~
 
-### 문제14. 뱃지가 6개 이상인 트레이너는 몇명?
+### 🅾️ 문제14. 뱃지가 6개 이상인 트레이너는 몇명?
 ~~~sql
 SELECT 
   COUNT(name) as cnt
@@ -189,7 +189,7 @@ FROM Basic.trainer
 WHERE badge_count >= 6;
 ~~~
 
-### 문제15. 트레이너가 보유한 포켓몬(trainer_pokemon)이 제일 많은 트레이너?
+### 🅾️ 문제15. 트레이너가 보유한 포켓몬(trainer_pokemon)이 제일 많은 트레이너?
 ~~~sql
 SELECT 
   trainer_id,
@@ -200,7 +200,7 @@ ORDER BY cnt_pokemon DESC
 LIMIT 1;
 ~~~
 
-### 문제16. 포켓몬을 많이 풀어준 트레이너
+### 🅾️ 문제16. 포켓몬을 많이 풀어준 트레이너
 ~~~sql
 SELECT 
   trainer_id,
@@ -212,7 +212,7 @@ ORDER BY cnt_released DESC
 LIMIT 1;
 ~~~
 
-### 문제17.트레이너 별로 풀어준 포켓몬의 비율이 20%가 넘는 포켓몬 트레이너?
+### ⭐️❎ 문제17.트레이너 별로 풀어준 포켓몬의 비율이 20%가 넘는 포켓몬 트레이너?
 ~~~sql
 SELECT 
   trainer_id, 

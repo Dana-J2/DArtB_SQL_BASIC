@@ -486,9 +486,9 @@ FROM `Basic.battle`
 ---
 
 # 학습인증  
-![week5_1]("images/week5_1.png")  
+![week5_1](images/week5_1.png)  
 
-![week5_2]("images/week5_2.png")
+![week5_2](images/week5_2.png)
 <br>
 
 ---

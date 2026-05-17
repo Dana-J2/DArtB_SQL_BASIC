@@ -52,9 +52,31 @@
 * SQL 쿼리를 가독성 있게 작성할 수 있다. 
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+#### 📝 Mozila(firefox)의 SQL GUIDE 참고
+https://docs.telemetry.mozilla.org/concepts/sql_style
+
+### SQL 스타일 가이드
+1. **예약어는 대문자로 작성**  
+    : SQL에서 문법적인 용도로 사용하고 있는 문자들은 대문자로 작성  
+    *ex) `SELECT`, `FROM`, `WHERE`, 각종함수*  
+2. **컬럼 이름은 snake_case로 작성**  
+    : 컬럼 이름은 CamelCase가 아닌 snake_case로 작성  
+    *(단, 회사의 기준이 CamelCase면 사용. 일관성이 중요)*
+3. **명시적이름 사용**
+    - Alias로 별칭을 지을 때는 명시적인 이름을 적용
+    - AS a, AS b 같이 지으면 컬럼의 의미를 한번 더 생각하게 됨
+    - `JOIN`할 때 테이블의 이름도 명시적으로 정할 수 있다면 명시적으로 진행하기
+    - `AS`를 생략해서 별칭을 설정할 수도 있는데, `AS`를 쓰는 것도 명시적인 표현
+4. **기본적으로 왼쪽 정렬을 기준으로 작성**
+5. **예약어나 컬럼은 한 줄에 하나씩 권장**  
+    : 컬럼은 바로 주석처리할 수 있는 장점이 있기에 
+6. **쉼표는 컬럼 바로 뒤에**
 
 
+<br>
+<br>
+<br>
+<br>
 
 ## 6-3. 가독성을 챙기기 위한 WITH문 & 파티션
 
@@ -64,9 +86,53 @@
 * WITH문과 파티션을 활용해서도 가독성을 챙길 수 있다. 
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+### `WITH`문 
+: 아래 쿼리가 다른 곳에서도 필요한 경우 `WITH`문을 사용해 쿼리를 정의해서 재사용 가능  
+- CTE(Common Table Expression)
+- `SELECT` 구문에 이름을 정해주는 것과 유사
+- 쿼리 내에서 반복적으로 사용가능  
+<br>
+
+```sql
+# 기존
+SELECT
+    col1, col2
+FROM (
+    SELECT 
+        col1, col2, col3 
+    FROM 
+        Table)
+
+# WITH문
+WITH temp_table AS
+    (SELECT 
+        col1, col2, col3 
+    FROM 
+        Table)
+
+SELECT 
+    col1, col2
+FROM temp_table
+```
+<br>
+<br>
 
 
+### `PARTITION` 
+✔️ PARTITION 사용의 장점
+1. **쿼리 성능 향상**  
+    : 전체 데이터를 스캔하는 것보다 파티션 설정된 곳만 스캔하는 것이 더 빠름
+2. **데이터 관리 용이성**  
+    : 특정 일자의 데이터를 모두 변경하거나 삭제해야하면 파티션을 설정해서 삭제할 수 있음
+3. **비용**  
+    : 파티션에 해당되는 데이터만 스캔해서 비용을 줄일 수 있음 
+
+
+
+<br>
+<br>
+<br>
+<br>
 
 ## 6-4. 데이터 결과 검증 정의 
 
@@ -76,14 +142,37 @@
 * 데이터 결과 검증에 대한 예시를 이해할 수 있다.  
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+### 데이터 결과 검증(Data Result Validation)
+: SQL 쿼리 후 얻은 결과가 예상과 일치하는지 확인하는 과정  
+- **목적** : 분석결과의 정확성, 신뢰성 확보
+- **과정** : 예상 결과 정의 👉 쿼리 작성 👉 두개가 일치하는지 비교
+- **주의점**
+    - 문제를 잘 정의, 미리 작성해보기
+    - 도메인 특수성 파악
 
+<br>
 
+### 데이터 결과를 검증하는 흐름
+|    |        | 
+| -- | ------ | 
+| **문제정의 확인** | 구체적인 문제&요청사항 확인 |
+| **Input/Output** | 데이터의 input과 output 작성하기 | 
+| **쿼리작성** | 가독성챙기기 | 
+| **결과비교** | 예상과 실제 쿼리 결과의 차이가 있는지 확인 (오류가 있다면 쿼리 작성 단계로) | 
+
+<br>
+
+### 데이터 결과 검증시 자주 활용하는 SQL쿼리 
+1. `COUNT(*)` : 행 수를 확인. 의도한 데이터의 행수가 맞는가?
+2. `NOT NULL` : 특정 컬럼에 NULL이 존재하는가? 필수 필드가 비어있지 않는가?
+3. `DISTINCT` : 데이터의 고유값을 확인해 중복 여부 확인
+4. `IF문`, `CASE WHEN` : 의도와 같다면 TREU, 아니면 FALSE
 
 
 
 <br>
-
+<br>
+<br>
 <br>
 
 ---
@@ -94,15 +183,18 @@
 
 https://school.programmers.co.kr/learn/courses/30/lessons/131117
 
-> 5월 식품들의 총매출 조회하기
+> 5월 식품들의 총매출 조회하기  
+![week7_1]()
 
 https://school.programmers.co.kr/learn/courses/30/lessons/59045
 
-> 보호소에서 중성화한 동물
+> 보호소에서 중성화한 동물  
+![week7_2]()
 
 https://school.programmers.co.kr/learn/courses/30/lessons/59043
 
-> 있었는데요 없었습니다.
+> 있었는데요 없었습니다.  
+![week7_3]()
 
 
 
@@ -110,15 +202,16 @@ https://school.programmers.co.kr/learn/courses/30/lessons/59043
 
 https://leetcode.com/problems/customers-who-never-order/
 
-> 183. Customers Who Never Order
+> 183. Customers Who Never Order   
+![week7_4]()
+
 
 https://leetcode.com/problems/list-the-products-ordered-in-a-period/
 
-> 585. Investments in 2016
+> 585. Investments in 2016  
+![week7_5]()
 
 
-
-<!-- 정답을 맞추게 되면, 정답입니다. 이 부분을 캡처해서 이 주석을 지우시고 첨부해주시면 됩니다. --> 
 
 
 
@@ -141,8 +234,23 @@ where u.region= 'Busan'			order by o.OrderID
 
 
 
-~~~
-여기에 답을 작성해주세요.
+~~~sql
+SELECT
+    u.name,
+    o.OrderID,
+    p.ProductName,
+    od.Quantity,
+    od.UnitPrice
+FROM Users AS u
+JOIN Orders AS o
+    ON u.id = o.userId
+JOIN OrderDetails AS od
+    ON o.OrderID = od.orderID
+JOIN Products AS p
+    ON od.ProductID = p.ProductID
+WHERE 
+    u.region = 'Busan'
+ORDER BY o.OrderID;
 ~~~
 
 ---

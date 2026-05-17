@@ -203,7 +203,7 @@ https://school.programmers.co.kr/learn/courses/30/lessons/59043
 https://leetcode.com/problems/customers-who-never-order/
 
 > 183. Customers Who Never Order   
-![week7_4](images/week7_4.png)
+![week7_4](images/week7_4.jpg)
 
 
 https://leetcode.com/problems/list-the-products-ordered-in-a-period/

@@ -184,17 +184,17 @@ FROM temp_table
 https://school.programmers.co.kr/learn/courses/30/lessons/131117
 
 > 5월 식품들의 총매출 조회하기  
-![week7_1]()
+![week7_1](images/week7_1.png)
 
 https://school.programmers.co.kr/learn/courses/30/lessons/59045
 
 > 보호소에서 중성화한 동물  
-![week7_2]()
+![week7_2](images/week7_2.png)
 
 https://school.programmers.co.kr/learn/courses/30/lessons/59043
 
 > 있었는데요 없었습니다.  
-![week7_3]()
+![week7_3](images/week7_3.png)
 
 
 
@@ -203,13 +203,13 @@ https://school.programmers.co.kr/learn/courses/30/lessons/59043
 https://leetcode.com/problems/customers-who-never-order/
 
 > 183. Customers Who Never Order   
-![week7_4]()
+![week7_4](images/week7_4.png)
 
 
 https://leetcode.com/problems/list-the-products-ordered-in-a-period/
 
 > 585. Investments in 2016  
-![week7_5]()
+![week7_5](images/week7_5.png)
 
 
 
